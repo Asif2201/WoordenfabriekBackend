@@ -8,9 +8,9 @@ export const ChallengeQuestionsK03 = async (req, res) => {
     let data = '';
     if (ChallengeID) {
       ChallengeID = `'${ChallengeID}'`;
-      data = await LearningDetailsModel.select('id, challengelevelid, Morfeem1, Morfeem2, Morfeem3,  answer1, answer2, answer3,  levelid, challengeid', 'challengelevelid', ChallengeID);
+      data = await LearningDetailsModel.select('id, challengelevelid, Morfeem1, Morfeem2, Morfeem3,  answer1, answer2, answer3,  levelid, challengeid,feedbackType', 'challengelevelid', ChallengeID);
     } else {
-      data = await LearningDetailsModel.select('id, challengelevelid, Morfeem1, Morfeem2, Morfeem3,  answer1, answer2, answer3,  levelid, challengeid');
+      data = await LearningDetailsModel.select('id, challengelevelid, Morfeem1, Morfeem2, Morfeem3,  answer1, answer2, answer3,  levelid, challengeid,feedbackType');
     }
     res.status(200).json({ LearningQuestions: data });
   } catch (err) {
