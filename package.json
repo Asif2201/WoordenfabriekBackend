@@ -1,6 +1,6 @@
 {
   "name": "woordenfabriekbackend",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "prestart": "babel ./src --out-dir build",
@@ -13,6 +13,9 @@
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "runQuery": "babel-node ./src/utils/runQuery"
   },
+  "engines": {
+      "node": ">= 14.0.0"
+    },  
   "dependencies": {
     "@babel/cli": "^7.14.3",
     "@babel/core": "^7.14.3",
