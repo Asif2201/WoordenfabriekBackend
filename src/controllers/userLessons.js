@@ -10,14 +10,14 @@ export const LessonsPage = async (req, res) => {
     let data = '';
     if (lessonID) {
       lessonID = `'${lessonID}'`;
-      data = await lessonModel.select('studentlevelid, studentlessonid, iscurrent,levelsubtitle, startdate, completiondate, earnedstars, completionprogress,  leveltitle,lessontitle, lessonsubtitle', 'StudentLessonID', lessonID);
+      data = await lessonModel.select('studentlevelid, studentlessonid, iscurrent, isevaluationchallenge, levelsubtitle, startdate, completiondate, earnedstars, completionprogress,  leveltitle,lessontitle, lessonsubtitle', 'StudentLessonID', lessonID);
     } else if (studentEmail) {
       studentEmail = `'${studentEmail}'`;
       data = await userModel.select('StudentLessonID, LessonTitle, Status, AssignedDate, CompletionDate, StudentEMAIL', 'StudentEMAIL', studentEmail);
     } else {
       data = await userModel.select('StudentLessonID, LessonTitle, Status, AssignedDate, CompletionDate, StudentEMAIL');
     }
-  
+   
     res.status(200).json({ vwUsers: data });
   } catch (err) {
     res.status(200).json({ vwUsers: err.stack });
