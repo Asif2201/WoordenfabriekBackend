@@ -4,7 +4,7 @@ import {
   ChallengeDetails, ChallengeQuestions, Challenges, UpdateStudentAnswers, UpdateStudentLevels,
   UpdateStudentChallenges, ChallengeQuestionsC01, ChallengeQuestionsK02, ChallengeQuestionsK03,
   ChallengeQuestionsV01, ChallengeQuestionsV02, ChallengeQuestionsH01, ChallengeQuestionsH02,
-  ChallengeQuestionsH05
+  ChallengeQuestionsH05, ChallengeQuestionsCA3, ChallengeQuestionsS01
 } from '../controllers';
 import { modifyMessage, performAsyncAction } from '../middleware';
 
@@ -27,7 +27,8 @@ indexRouter.get('/ChallengeQuestionsV02', ChallengeQuestionsV02);
 indexRouter.get('/ChallengeQuestionsH01', ChallengeQuestionsH01);
 indexRouter.get('/ChallengeQuestionsH02', ChallengeQuestionsH02);
 indexRouter.get('/ChallengeQuestionsH05', ChallengeQuestionsH05);
-
+indexRouter.get('/ChallengeQuestionsCA3', ChallengeQuestionsCA3);
+indexRouter.get('/ChallengeQuestionsS01', ChallengeQuestionsS01);
 
 indexRouter.get('/messages', messagesPage);
 indexRouter.post('/messages', modifyMessage, performAsyncAction, addMessage);
