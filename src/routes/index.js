@@ -1,12 +1,11 @@
 import express from 'express';
 import {
-  indexPage, messagesPage, userPage, addMessage, LessonsPage, authenticate, me, LevelsPage,
+  indexPage, userPage, LessonsPage, authenticate, me, LevelsPage,
   ChallengeDetails, ChallengeQuestions, Challenges, UpdateStudentAnswers, UpdateStudentLevels,
   UpdateStudentChallenges, ChallengeQuestionsC01, ChallengeQuestionsK02, ChallengeQuestionsK03,
   ChallengeQuestionsV01, ChallengeQuestionsV02, ChallengeQuestionsH01, ChallengeQuestionsH02,
   ChallengeQuestionsH05, ChallengeQuestionsCA3, ChallengeQuestionsS01
 } from '../controllers';
-import { modifyMessage, performAsyncAction } from '../middleware';
 
 const indexRouter = express.Router();
 
@@ -30,8 +29,6 @@ indexRouter.get('/ChallengeQuestionsH05', ChallengeQuestionsH05);
 indexRouter.get('/ChallengeQuestionsCA3', ChallengeQuestionsCA3);
 indexRouter.get('/ChallengeQuestionsS01', ChallengeQuestionsS01);
 
-indexRouter.get('/messages', messagesPage);
-indexRouter.post('/messages', modifyMessage, performAsyncAction, addMessage);
 indexRouter.post('/login', authenticate);
 indexRouter.get('/me', me);
 indexRouter.post('/UpdateStudentAnswers', UpdateStudentAnswers);
