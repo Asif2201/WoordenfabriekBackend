@@ -21,3 +21,6 @@ export * from './ChallengeDetailsH02';
 export * from './ChallengeDetailsH05';
 export * from './ChallengeDetailsCA3';
 export * from './ChallengeDetailsS01';
+export * from './ChallengeDetailsLE1';
+export * from './ChallengeDetailsLE2';
+export * from './ChallengeDetailsLE3';

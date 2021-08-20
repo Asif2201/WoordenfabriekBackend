@@ -4,7 +4,8 @@ import {
   ChallengeDetails, ChallengeQuestions, Challenges, UpdateStudentAnswers, UpdateStudentLevels,
   UpdateStudentChallenges, ChallengeQuestionsC01, ChallengeQuestionsK02, ChallengeQuestionsK03,
   ChallengeQuestionsV01, ChallengeQuestionsV02, ChallengeQuestionsH01, ChallengeQuestionsH02,
-  ChallengeQuestionsH05, ChallengeQuestionsCA3, ChallengeQuestionsS01
+  ChallengeQuestionsH05, ChallengeQuestionsCA3, ChallengeQuestionsS01, ChallengeQuestionsLE1,
+  ChallengeQuestionsLE2, ChallengeQuestionsLE3
 } from '../controllers';
 
 const indexRouter = express.Router();
@@ -28,6 +29,9 @@ indexRouter.get('/ChallengeQuestionsH02', ChallengeQuestionsH02);
 indexRouter.get('/ChallengeQuestionsH05', ChallengeQuestionsH05);
 indexRouter.get('/ChallengeQuestionsCA3', ChallengeQuestionsCA3);
 indexRouter.get('/ChallengeQuestionsS01', ChallengeQuestionsS01);
+indexRouter.get('/ChallengeQuestionsLE1', ChallengeQuestionsLE1);
+indexRouter.get('/ChallengeQuestionsLE2', ChallengeQuestionsLE2);
+indexRouter.get('/ChallengeQuestionsLE3', ChallengeQuestionsLE3);
 
 indexRouter.post('/login', authenticate);
 indexRouter.get('/me', me);
