@@ -24,3 +24,4 @@ export * from './ChallengeDetailsS01';
 export * from './ChallengeDetailsLE1';
 export * from './ChallengeDetailsLE2';
 export * from './ChallengeDetailsLE3';
+export * from './StudentLEAnswers';
