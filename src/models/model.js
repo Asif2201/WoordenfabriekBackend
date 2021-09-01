@@ -20,14 +20,17 @@ class Model {
   async Update(params) {
     const connection = await mysql.createConnection(config.connectionString);
     var p;
+    var anyparam = false;
     let query = `CALL ${this.table}(`;
     for (p in params) {
+      anyparam = true;
       query += p;
       query += ',';
     }
-    query = query.substring(0, query.length - 1);
+    if (anyparam) {
+      query = query.substring(0, query.length - 1);
+    }
     query += ')';
-    console.log(query);
     await connection.execute(query);
     return null;
   }

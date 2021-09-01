@@ -5,7 +5,7 @@ import {
   UpdateStudentChallenges, ChallengeQuestionsC01, ChallengeQuestionsK02, ChallengeQuestionsK03,
   ChallengeQuestionsV01, ChallengeQuestionsV02, ChallengeQuestionsH01, ChallengeQuestionsH02,
   ChallengeQuestionsH05, ChallengeQuestionsCA3, ChallengeQuestionsS01, ChallengeQuestionsLE1,
-  ChallengeQuestionsLE2, ChallengeQuestionsLE3, StudentLEAnswers
+  ChallengeQuestionsLE2, ChallengeQuestionsLE3, StudentLEAnswers, ResetData
 } from '../controllers';
 
 const indexRouter = express.Router();
@@ -39,5 +39,6 @@ indexRouter.get('/me', me);
 indexRouter.post('/UpdateStudentAnswers', UpdateStudentAnswers);
 indexRouter.post('/UpdateStudentLevels', UpdateStudentLevels);
 indexRouter.post('/UpdateStudentChallenges', UpdateStudentChallenges);
+indexRouter.post('/ResetData', ResetData);
 
 export default indexRouter;
