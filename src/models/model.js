@@ -21,6 +21,7 @@ class Model {
     const connection = await mysql.createConnection(config.connectionString);
     var p;
     var anyparam = false;
+    console.log(params);
     let query = `CALL ${this.table}(`;
     for (p in params) {
       anyparam = true;
@@ -31,6 +32,7 @@ class Model {
       query = query.substring(0, query.length - 1);
     }
     query += ')';
+    console.log(query);
     await connection.execute(query);
     return null;
   }
