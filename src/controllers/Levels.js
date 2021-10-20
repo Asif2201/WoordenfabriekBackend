@@ -1,17 +1,13 @@
 import Model from '../models/model';
 
 const challengeModel = new Model('Levels');
+const url = require('url');
 
 export const ChallengeDetails = async (req, res) => {
   try {
-    let { LevelID } = req.query;
+    const queryObject = url.parse(req.url, true).query;
     let data = '';
-    if (LevelID) {
-      LevelID = `'${LevelID}'`;
-      data = await challengeModel.select('levelid, levelsubtitle', 'levelid', LevelID);
-    } else {
-      data = await challengeModel.select('levelid, levelsubtitle');
-    }
+    data = await challengeModel.select('*', queryObject);
     res.status(200).json({ Levels: data });
   } catch (err) {
     res.status(200).json({ Levels: err.stack });

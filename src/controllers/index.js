@@ -27,3 +27,8 @@ export * from './ChallengeDetailsLE3';
 export * from './ChallengeDetailsI01';
 export * from './StudentLEAnswers';
 export * from './ResetData';
+export * from './ChallengeDetails';
+export * from './Classes';
+export * from './Students';
+export * from './UpdateClasses';
+export * from './UpdateStudents';

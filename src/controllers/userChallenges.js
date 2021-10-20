@@ -1,21 +1,14 @@
 import Model from '../models/model';
 
 const lessonModel = new Model('vwLessonLevelsSummary');
+const url = require('url');
 
 export const LevelsPage = async (req, res) => {
   try {
-    let { OnlyCurrent } = req.query;
-    let { lessonID } = req.query;
+    const queryObject = url.parse(req.url, true).query;
     let data = '';
-    if ((lessonID) && !(OnlyCurrent)) {
-      lessonID = `'${lessonID}'`;
-      data = await lessonModel.select('studentlevelid, iscurrent, isevaluationchallenge, studentlessonid, levelsubtitle, startdate, completiondate, earnedstars, completionprogress, LevelID, leveltitle,lessontitle, lessonsubtitle', 'StudentLessonID', lessonID);
-    } else if (OnlyCurrent) {
-      OnlyCurrent = `'${OnlyCurrent}'`;
-      data = await lessonModel.select('studentlevelid, iscurrent, isevaluationchallenge, studentlessonid, levelsubtitle, startdate, completiondate, earnedstars, completionprogress,  LevelID, leveltitle,lessontitle, lessonsubtitle', 'StudentLessonID', lessonID, 'isCurrent', OnlyCurrent);
-    } else {
-      data = await lessonModel.select('studentlevelid, iscurrent, isevaluationchallenge, studentlessonid, levelsubtitle, startdate, completiondate, earnedstars, completionprogress,  LevelID, leveltitle,lessontitle, lessonsubtitle');
-    }
+
+    data = await lessonModel.select('*', queryObject);
     res.status(200).json({ vwUsers: data });
   } catch (err) {
     res.status(200).json({ vwUsers: err.stack });

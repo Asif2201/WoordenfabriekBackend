@@ -1,17 +1,15 @@
 import Model from '../models/model';
 
 const LearningDetailsModel = new Model('vwChallengeDetailsC01');
+const url = require('url');
+
 
 export const ChallengeQuestionsC01 = async (req, res) => {
   try {
-    let { ChallengeID } = req.query;
+    const queryObject = url.parse(req.url, true).query;
+
     let data = '';
-    if (ChallengeID) {
-      ChallengeID = `'${ChallengeID}'`;
-      data = await LearningDetailsModel.select('id, challengelevelid, sentence, answer, levelid, challengeid, feedbackType, studentAnswer, studentCorrect, AnswerExplanation', 'challengelevelid', ChallengeID);
-    } else {
-      data = await LearningDetailsModel.select('id, challengelevelid, sentence, answer, levelid, challengeid, feedbackType, studentAnswer, studentCorrect, AnswerExplanation');
-    }
+    data = await LearningDetailsModel.select('id, challengelevelid, sentence, answer, levelid, challengeid, feedbackType, studentAnswer, studentCorrect, AnswerExplanation', queryObject);
     res.status(200).json({ LearningQuestions: data });
   } catch (err) {
     res.status(200).json({ LearningQuestions: err.stack });

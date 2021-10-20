@@ -1,9 +1,9 @@
 import Model from '../models/model';
 
-const userModel = new Model('vwUsers');
+const userModel = new Model('vwClasses');
 const url = require('url');
 
-export const userPage = async (req, res) => {
+export const Classes = async (req, res) => {
   try {
     const queryObject = url.parse(req.url, true).query;
     let data = '';

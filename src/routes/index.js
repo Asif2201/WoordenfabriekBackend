@@ -1,45 +1,35 @@
 import express from 'express';
 import {
   indexPage, userPage, LessonsPage, authenticate, me, LevelsPage,
-  ChallengeDetails, ChallengeQuestions, Challenges, UpdateStudentAnswers, UpdateStudentLevels,
-  UpdateStudentChallenges, ChallengeQuestionsC01, ChallengeQuestionsK02, ChallengeQuestionsK03,
-  ChallengeQuestionsV01, ChallengeQuestionsV02, ChallengeQuestionsH01, ChallengeQuestionsH02,
-  ChallengeQuestionsH05, ChallengeQuestionsCA3, ChallengeQuestionsS01, ChallengeQuestionsLE1,
-  ChallengeQuestionsLE2, ChallengeQuestionsLE3, ChallengeQuestionsI01, StudentLEAnswers, ResetData
+  ChallengeDetails, Challenges, UpdateStudentAnswers, UpdateStudentLevels,
+  UpdateStudentChallenges, StudentLEAnswers, ResetData, Classes, Students,
+  ChallengeQuestionsAll, UpdateClass, UpdateStudent
 } from '../controllers';
 
 const indexRouter = express.Router();
 
 indexRouter.get('/', indexPage);
+indexRouter.post('/login', authenticate);
+indexRouter.get('/me', me);
+
 indexRouter.get('/users', userPage);
+indexRouter.get('/students', Students);
+indexRouter.get('/classes', Classes);
+
 indexRouter.get('/userLessons', LessonsPage);
 indexRouter.get('/userLevels', LevelsPage);
 indexRouter.get('/Challenges', Challenges);
 
 indexRouter.get('/ChallengeDetails', ChallengeDetails);
+indexRouter.get('/ChallengeQuestionsAll', ChallengeQuestionsAll);
 
-indexRouter.get('/ChallengeQuestions', ChallengeQuestions);
-indexRouter.get('/ChallengeQuestionsC01', ChallengeQuestionsC01);
-indexRouter.get('/ChallengeQuestionsK02', ChallengeQuestionsK02);
-indexRouter.get('/ChallengeQuestionsK03', ChallengeQuestionsK03);
-indexRouter.get('/ChallengeQuestionsV01', ChallengeQuestionsV01);
-indexRouter.get('/ChallengeQuestionsV02', ChallengeQuestionsV02);
-indexRouter.get('/ChallengeQuestionsH01', ChallengeQuestionsH01);
-indexRouter.get('/ChallengeQuestionsH02', ChallengeQuestionsH02);
-indexRouter.get('/ChallengeQuestionsH05', ChallengeQuestionsH05);
-indexRouter.get('/ChallengeQuestionsCA3', ChallengeQuestionsCA3);
-indexRouter.get('/ChallengeQuestionsS01', ChallengeQuestionsS01);
-indexRouter.get('/ChallengeQuestionsLE1', ChallengeQuestionsLE1);
-indexRouter.get('/ChallengeQuestionsLE2', ChallengeQuestionsLE2);
-indexRouter.get('/ChallengeQuestionsLE3', ChallengeQuestionsLE3);
-indexRouter.get('/ChallengeQuestionsI01', ChallengeQuestionsI01);
 indexRouter.get('/StudentLEAnswers', StudentLEAnswers);
 
-indexRouter.post('/login', authenticate);
-indexRouter.get('/me', me);
 indexRouter.post('/UpdateStudentAnswers', UpdateStudentAnswers);
 indexRouter.post('/UpdateStudentLevels', UpdateStudentLevels);
 indexRouter.post('/UpdateStudentChallenges', UpdateStudentChallenges);
+indexRouter.post('/UpdateClass', UpdateClass);
+indexRouter.post('/UpdateStudent', UpdateStudent);
 indexRouter.post('/ResetData', ResetData);
 
 export default indexRouter;

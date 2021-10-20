@@ -6,13 +6,21 @@ class Model {
     this.table = table;
   }
 
-  async select(columns, clause, values, clause2, values2) {
+  async select(columns, clause) {
     const connection = await mysql.createConnection(config.connectionString,
       { multipleStatements: true });
     let query = `SELECT ${columns} FROM ${this.table}`;
-    if (clause2) {
-      query += ` WHERE ${clause}  = ${values} AND ${clause2} = ${values2}`;
-    } else if (clause) query += ` WHERE ${clause} = ${values}`;
+    if (clause) {
+      query += ' WHERE ';
+    }
+    for (var i in clause)  {
+      query += ` ${i}  = ${clause[i]} `
+      query += ` AND `
+    }
+    if (clause) {
+      query = query.substring(0, query.length - 4);
+    }
+    console.log(query);
     const [ results, ] = await connection.execute(query);
     return results;
   }
@@ -21,12 +29,12 @@ class Model {
     const connection = await mysql.createConnection(config.connectionString);
     var p;
     var anyparam = false;
-    console.log(params);
     let query = `CALL ${this.table}(`;
     for (p in params) {
       anyparam = true;
-      query += p;
-      query += ',';
+      query += `'`;
+      query += params[p];
+      query += `',`;
     }
     if (anyparam) {
       query = query.substring(0, query.length - 1);
