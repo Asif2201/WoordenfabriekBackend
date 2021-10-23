@@ -12,7 +12,7 @@ app.use(cookieParser());
 const corsOptions = {
   origin: [ 'https://woordenfabriekv2-lemw7vp5xq-ez.a.run.app', 'http://localhost:8080' ],
   methods: ('GET, POST'),
-  allowedHeaders: ('Content-Type, Authorization'),
+  allowedHeaders: ('Content-Type, Authorization, cache-control'),
   optionSuccessStatus: 200
 };
 
