@@ -3,7 +3,6 @@ import Model from '../models/model';
 const LearningDetailsModel = new Model('vwChallengeDetailsC01');
 const url = require('url');
 
-
 export const ChallengeQuestionsC01 = async (req, res) => {
   try {
     const queryObject = url.parse(req.url, true).query;

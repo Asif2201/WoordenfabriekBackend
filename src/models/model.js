@@ -13,34 +13,33 @@ class Model {
     if (clause) {
       query += ' WHERE ';
     }
-    for (var i in clause)  {
-      query += ` ${i}  = ${clause[i]} `
-      query += ` AND `
+    for (const i in clause) {
+      query += ` ${i}  = ${clause[i]} `;
+      query += ' AND ';
     }
     if (clause) {
       query = query.substring(0, query.length - 4);
     }
-    console.log(query);
     const [ results, ] = await connection.execute(query);
     return results;
   }
 
   async Update(params) {
     const connection = await mysql.createConnection(config.connectionString);
-    var p;
-    var anyparam = false;
+    let p;
+    let anyparam = false;
     let query = `CALL ${this.table}(`;
+   
     for (p in params) {
-      anyparam = true;
-      query += `'`;
-      query += params[p];
-      query += `',`;
+        anyparam = true;
+        query += '\'';
+        query += params[p];
+        query += '\',';
     }
     if (anyparam) {
       query = query.substring(0, query.length - 1);
     }
     query += ')';
-    console.log(query);
     await connection.execute(query);
     return null;
   }

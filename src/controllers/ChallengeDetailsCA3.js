@@ -8,7 +8,7 @@ export const ChallengeQuestionsCA3 = async (req, res) => {
     let data = '';
     const queryObject = url.parse(req.url, true).query;
 
-      data = await LearningDetailsModel.select('id, challengelevelid, word, answer, showMultiMorfeem, levelid, challengeid, feedbackType, studentAnswer, studentCorrect, AnswerExplanation', queryObject);
+    data = await LearningDetailsModel.select('id, challengelevelid, word, answer, showMultiMorfeem, levelid, challengeid, feedbackType, studentAnswer, studentCorrect, AnswerExplanation', queryObject);
     res.status(200).json({ LearningQuestions: data });
   } catch (err) {
     res.status(200).json({ LearningQuestions: err.stack });

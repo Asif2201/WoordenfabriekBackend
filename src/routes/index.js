@@ -3,7 +3,7 @@ import {
   indexPage, userPage, LessonsPage, authenticate, me, LevelsPage,
   ChallengeDetails, Challenges, UpdateStudentAnswers, UpdateStudentLevels,
   UpdateStudentChallenges, StudentLEAnswers, ResetData, Classes, Students,
-  ChallengeQuestionsAll, UpdateClass, UpdateStudent
+  ChallengeQuestionsAll, UpdateClass, UpdateStudent, LevelEndMessages
 } from '../controllers';
 
 const indexRouter = express.Router();
@@ -15,6 +15,7 @@ indexRouter.get('/me', me);
 indexRouter.get('/users', userPage);
 indexRouter.get('/students', Students);
 indexRouter.get('/classes', Classes);
+indexRouter.get('/levelendmessages', LevelEndMessages);
 
 indexRouter.get('/userLessons', LessonsPage);
 indexRouter.get('/userLevels', LevelsPage);

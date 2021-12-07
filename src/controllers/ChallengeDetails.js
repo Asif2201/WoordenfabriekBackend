@@ -5,7 +5,7 @@ const url = require('url');
 export const ChallengeQuestionsAll = async (req, res) => {
   try {
     const queryObject = url.parse(req.url, true).query;
-    const challengtype = 'vwChallengeDetails' + queryObject.challengeType;
+    const challengtype = `vwChallengeDetails${queryObject.challengeType}`;
     const LearningDetailsModel = new Model(challengtype);
     delete queryObject.challengeType;
     let data = '';
