@@ -1,6 +1,6 @@
 import Model from '../models/model';
 
-const userModel = new Model('levelend_messages');
+const userModel = new Model('vwLevelEndMessage');
 const url = require('url');
 
 export const LevelEndMessages = async (req, res) => {
