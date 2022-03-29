@@ -1,2 +1,10 @@
 runtime: nodejs14
-
+env: standard
+instance_class: B1
+handlers:
+  - url: .*
+    script: auto
+manual_scaling:
+  instances: 5
+network: {}
+service_account: woordenfabriek@appspot.gserviceaccount.com

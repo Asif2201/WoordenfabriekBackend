@@ -1,0 +1,32 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: woordenfabriekAPI
+  labels:
+    migrated-from: app-engine
+    cloud.googleapis.com/location: us-central1
+  annotations:
+    run.googleapis.com/launch-stage: BETA
+spec:
+  template:
+    metadata:
+      annotations:
+        run.googleapis.com/cpu-throttling: 'false'
+        autoscaling.knative.dev/maxScale: '10'
+        run.googleapis.com/cloudsql-instances: 'woordenfabriek:us-central1:woordenfabriekdb2-prd'
+    spec:
+      containers:
+        - image: gcr.io/woordenfabriek/woordenfabriekAPI
+          env:
+            - name: LIMIT
+              value: 100
+            - name: QUEUE_ID
+              value: emails
+            - name: GOOGLE_CLOUD_PROJECT
+              value: woordenfabriek
+          resources:
+            limits:
+              memory: 512Mi
+              cpu: '1'
+      serviceAccountName: woordenfabriek@appspot.gserviceaccount.com
+      containerConcurrency: 80
