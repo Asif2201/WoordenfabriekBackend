@@ -42,6 +42,7 @@ class Model {
     }
     query += ')';
     await connection.execute(query);
+    connection.end();
     return null;
   }
 }
