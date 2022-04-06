@@ -21,6 +21,7 @@ class Model {
       query = query.substring(0, query.length - 4);
     }
     const [ results, ] = await connection.execute(query);
+    connection.end();
     return results;
   }
 
